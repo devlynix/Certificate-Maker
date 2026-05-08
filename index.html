@@ -1282,7 +1282,7 @@ body {
 
       <div class="field-group">
         <label class="field-label">Participant Full Name</label>
-        <input class="field-input" id="iName" value="Yash Harfode" oninput="sync('Name')">
+        <input class="field-input" id="iName" value="Participant Name" oninput="sync('Name')">
       </div>
 
       <div class="field-group">
@@ -1605,7 +1605,7 @@ Arjun Dev,The Pure Coder Award,CodeBot</div>
 
           <!-- Recipient name -->
           <div class="cert-recipient-wrap">
-            <span id="certName" class="cert-recipient-name">Yash Harfode</span>
+            <span id="certName" class="cert-recipient-name">Participant Name</span>
             <span class="cert-name-underline"></span>
           </div>
 
@@ -1964,10 +1964,12 @@ async function startBulkGenerate() {
   for (let i = 0; i < entries.length; i++) {
     const entry = entries[i];
     const certId = generateId();
+    currentCertId = certId; // Update global state for QR
 
     // Update certificate
     setCertFields(entry);
     document.getElementById('certIdStrip').textContent = 'CERT-ID: ' + certId;
+    generateQR();
 
     // Wait for render
     await new Promise(r => setTimeout(r, 200));
@@ -2396,7 +2398,7 @@ function generateQR() {
   const qrContainer = document.getElementById("certQR");
   qrContainer.innerHTML = "";
   qrCodeObj = new QRCode(qrContainer, {
-    text: "Verified Certificate.\nID: " + currentCertId + "\nName: " + document.getElementById('iName').value + "\n\nTo verify, check this ID on the Devlynix Official Website.",
+    text: "Verified Certificate.\nID: " + currentCertId + "\nParticipant Name: " + document.getElementById('iName').value + "\n\nTo verify, check this ID on the Devlynix Official Website.",
     width: 90,
     height: 90,
     colorDark : "#0a0f1e",
