@@ -440,10 +440,10 @@ body {
   left:50%;
   transform:translate(-50%,-50%);
   width:42%;
-  opacity:0.035;
+  opacity:0.05;
   z-index:1;
   pointer-events:none;
-  filter:grayscale(100%) contrast(1.5);
+  filter:none;
 }
 
 /* Left and right vertical gold lines */
@@ -484,8 +484,8 @@ body {
   flex-shrink:0;
   min-height:80px;
 }
-.cert-logo-main { height:72px; width:auto; max-width:200px; object-fit:contain; }
-.cert-logo-msme { height:60px; width:auto; max-width:160px; object-fit:contain; }
+.cert-logo-main { height:72px; width:auto; max-width:200px; object-fit:contain; padding:6px; }
+.cert-logo-msme { height:60px; width:auto; max-width:160px; object-fit:contain; padding:4px; }
 
 .cert-top-center {
   text-align:center;
@@ -520,6 +520,7 @@ body {
   font-weight:600;
   letter-spacing:0.1em;
   margin-top:4px;
+  margin-right:12px;
   text-transform:uppercase;
 }
 
@@ -1110,24 +1111,6 @@ body {
 .cert-wrap[data-template="minimal"] .cert-title-divider .cert-divider-line { background: #e2e8f0; }
 .cert-wrap[data-template="minimal"] .cert-title-divider .cert-divider-diamond { background: #e2e8f0; }
 
-/* Elegant */
-.cert-wrap[data-template="elegant"] { background: #0f172a; color: #f8fafc; font-family: 'Cormorant Garamond', serif; }
-.cert-wrap[data-template="elegant"] .cert-bg { display: none; }
-.cert-wrap[data-template="elegant"] .cert-main-title h1 { color: #e8c97a; text-shadow: 0 2px 15px rgba(201,168,76,0.4); }
-.cert-wrap[data-template="elegant"] .cert-recipient-name { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.2); font-family: 'Alex Brush', cursive; }
-.cert-wrap[data-template="elegant"] .cert-desc-text, .cert-wrap[data-template="elegant"] .cert-project-line { color: #cbd5e1; }
-.cert-wrap[data-template="elegant"] .cert-award-title { color: #e8c97a; }
-.cert-wrap[data-template="elegant"] .cert-event-name, .cert-wrap[data-template="elegant"] .cert-presented-to { color: #94a3b8; }
-.cert-wrap[data-template="elegant"] .cert-date-val, .cert-wrap[data-template="elegant"] .cert-sig-text, .cert-wrap[data-template="elegant"] .cert-sig-name { color: #f8fafc; }
-.cert-wrap[data-template="elegant"] .cert-border-1 { border-color: #e8c97a; opacity: 0.6; }
-.cert-wrap[data-template="elegant"] .cert-border-2 { border-color: rgba(255,255,255,0.2); }
-.cert-wrap[data-template="elegant"] .cert-watermark { filter: invert(1) opacity(0.04); }
-.cert-wrap[data-template="elegant"] .cert-id-strip { color: rgba(255,255,255,0.5); }
-.cert-wrap[data-template="elegant"] .cert-partners-prefix, .cert-wrap[data-template="elegant"] .cert-partner-label { color: rgba(255,255,255,0.6); }
-
-
-
-
 /* === NEW TEMPLATES & RESPONSIVENESS === */
 /* Mobile Responsive */
 #mobilePreviewBtn { display: none; }
@@ -1216,7 +1199,7 @@ body {
 .cert-wrap[data-template="elegant"] .cert-date-val, .cert-wrap[data-template="elegant"] .cert-sig-text, .cert-wrap[data-template="elegant"] .cert-sig-name { color: #f8fafc; }
 .cert-wrap[data-template="elegant"] .cert-border-1 { border-color: #e8c97a; opacity: 0.6; }
 .cert-wrap[data-template="elegant"] .cert-border-2 { border-color: rgba(255,255,255,0.2); }
-.cert-wrap[data-template="elegant"] .cert-watermark { filter: invert(1) opacity(0.04); }
+.cert-wrap[data-template="elegant"] .cert-watermark { filter: invert(1) opacity(0.05); }
 .cert-wrap[data-template="elegant"] .cert-id-strip { color: rgba(255,255,255,0.5); }
 .cert-wrap[data-template="elegant"] .cert-partners-prefix, .cert-wrap[data-template="elegant"] .cert-partner-label { color: rgba(255,255,255,0.6); }
 
@@ -1253,7 +1236,7 @@ body {
 
 /* QR Code */
 .cert-qr-wrap { background: #fff; padding: 6px; border-radius: 4px; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-#certQR { width: 90px; height: 90px; }
+#certQR { width: 60px; height: 60px; }
 #certQR img { width: 100%; height: 100%; }
 
 </style>
@@ -1358,6 +1341,24 @@ body {
 
       <hr class="divider">
 
+      
+      <div class="field-group">
+        <label class="field-label">Participant Name Font</label>
+        <select class="field-select" id="iNameFont" onchange="updateNameFont(this.value)">
+          <option value="'Alex Brush', cursive">Alex Brush (Cursive)</option>
+          <option value="'Cinzel', serif">Cinzel (Classic)</option>
+          <option value="'Cinzel Decorative', serif">Cinzel Decorative</option>
+          <option value="'Great Vibes', cursive">Great Vibes (Elegant)</option>
+          <option value="'Montserrat', sans-serif">Montserrat (Modern)</option>
+          <option value="'Playfair Display', serif">Playfair Display (Premium)</option>
+          <option value="'Dancing Script', cursive">Dancing Script (Playful)</option>
+          <option value="'DM Sans', sans-serif">DM Sans (Bold)</option>
+          <option value="'Libre Baskerville', serif">Libre Baskerville</option>
+          <option value="'Cormorant Garamond', serif">Cormorant Garamond</option>
+          <option value="'Pacifico', cursive">Pacifico (Friendly)</option>
+</select>
+      </div>
+
       <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">Core Image Assets</div>
 
       <div class="grid-2">
@@ -1365,7 +1366,7 @@ body {
           <label class="field-label">Main Logo</label>
           <label class="upload-btn" for="uLogo">
             📎 Upload Logo
-            <input type="file" id="uLogo" accept="image/*" style="display:none" onchange="uploadImage(this,'certLogo','certWatermark')">
+            <input type="file" id="uLogo" accept="image/*" style="display:none" onchange="uploadImage(this,'certLogo')">
           </label>
         </div>
         <div class="field-group">
@@ -1389,7 +1390,16 @@ body {
             <input type="file" id="uSign" accept="image/png" style="display:none" onchange="uploadImage(this,'certSignImg','certSignText_hide')">
           </label>
         </div>
+
+        <div class="field-group">
+          <label class="field-label">Custom Watermark</label>
+          <label class="upload-btn" for="uWatermark">
+            📎 Upload Watermark
+            <input type="file" id="uWatermark" accept="image/*" style="display:none" onchange="uploadImage(this,'certWatermark')">
+          </label>
+        </div>
       </div>
+
 
       <hr class="divider">
 
@@ -1619,7 +1629,7 @@ Arjun Dev,The Pure Coder Award,CodeBot</div>
 
             <!-- Stamp (center) -->
             <div class="cert-center-block">
-              <img id="certStamp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='54' fill='none' stroke='%23c9a84c' stroke-width='3' stroke-dasharray='6 3'/%3E%3Ccircle cx='60' cy='60' r='44' fill='none' stroke='%23c9a84c' stroke-width='1.5'/%3E%3Ctext x='50%25' y='44%25' text-anchor='middle' dominant-baseline='middle' font-family='serif' font-size='10' fill='%23c9a84c' font-weight='bold'%3EOFFICIAL%3C/text%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='serif' font-size='10' fill='%23c9a84c'%3ESTAMP%3C/text%3E%3C/svg%3E" alt="Stamp" class="cert-stamp-img">
+              <img id="certStamp" src="" alt="Stamp" class="cert-stamp-img" style="display:none">
             </div>
 
             <!-- Signature -->
@@ -1640,18 +1650,14 @@ Arjun Dev,The Pure Coder Award,CodeBot</div>
           </div>
 
           <!-- Certificate ID & QR Code -->
-          <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 5px;">
-            <div id="certIdStrip" class="cert-id-strip">CERT-ID: DLX-2026-000000</div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 10px;">
             <div class="cert-qr-wrap"><div id="certQR"></div></div>
+            <div id="certIdStrip" class="cert-id-strip" style="position:static; transform:none; padding:0; margin:0; font-size:9px; opacity:0.6;">CERT-ID: DLX-2026-000000</div>
           </div>
         </div>
       </div>
 
-          <!-- Certificate ID & QR Code -->
-          <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 5px;">
-            <div id="certIdStrip" class="cert-id-strip">CERT-ID: DLX-2026-000000</div>
-            <div class="cert-qr-wrap"><div id="certQR"></div></div>
-          </div>
+          
         </div>
       </div>
 
@@ -1745,6 +1751,11 @@ function sync(field) {
   document.getElementById(certId).textContent = val;
 }
 
+
+function updateNameFont(font) {
+  document.getElementById('certName').style.fontFamily = font;
+}
+
 function syncSig() {
   const name = document.getElementById('iSignName').value;
   const role = document.getElementById('iSignRole').value;
@@ -1763,21 +1774,18 @@ function uploadImage(input, certImgId, hideId = null) {
   reader.onload = e => {
     const data = e.target.result;
     const img = document.getElementById(certImgId);
+    if(!img) return;
+    img.src = data;
+    img.style.display = 'block';
 
     if (certImgId === 'certLogo') {
       logoData = data;
-      img.src = data;
-      document.getElementById('certWatermark').src = data;
     } else if (certImgId === 'certMsme') {
       msmeData = data;
-      img.src = data;
     } else if (certImgId === 'certStamp') {
       stampData = data;
-      img.src = data;
     } else if (certImgId === 'certSignImg') {
       signData = data;
-      img.src = data;
-      img.style.display = 'block';
       document.getElementById('certSignCursive').style.display = 'none';
     }
     showToast('✅ Image uploaded!');
