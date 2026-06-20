@@ -6,7 +6,7 @@ A premium, professional, and highly customizable certificate generator. Create s
 ![Built With](https://img.shields.io/badge/Built%20With-HTML%20%7C%20CSS%20%7C%20JS-blue?style=for-the-badge)
 
 ---
-
+Demo:  https://devlynixcertificatemaker.netlify.app/
 ## ✨ Top Features
 
 - **🎨 6 Premium Templates**:
